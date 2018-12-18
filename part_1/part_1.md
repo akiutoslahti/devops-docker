@@ -47,7 +47,7 @@ $ docker attach curler
 ## Task 4
 
 ### Files
-[Dockerfile](task_4/Dockerfile)
+[Dockerfile](task_4/Dockerfile)  
 [Script](task_4/curl.sh)
 
 ### Commands
@@ -82,7 +82,7 @@ $ docker run -d -p 8000:8000 -v $(pwd)/logs.txt:/app/logs.txt task1_6
 ## Task 7
 
 ### Files
-[Frontend Dockerfile](task_7/Dockerfile_front)
+[Frontend Dockerfile](task_7/Dockerfile_front)  
 [Backend Dockerfile](task_7/Dockerfile_back)
 
 ### Commands

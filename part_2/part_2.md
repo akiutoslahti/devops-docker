@@ -31,11 +31,11 @@ $ docker compose up
 ## Tasks 5 - 6
 
 ### Files
-[Dockerfile Backend](task5/Dockerfile_back)  
-[Dockerfile Frontend](task5/Dockerfile_front)  
-[Compose file for task 5](task5/docker-compose.yml)  
-[Compose file for task 6](task6/docker-compose.yml)  
-[Nginx conf](nginx.conf)
+[Dockerfile Backend](task_5/Dockerfile_back)  
+[Dockerfile Frontend](task_5/Dockerfile_front)  
+[Compose file for task 5](task_5/docker-compose.yml)  
+[Compose file for task 6](task_6/docker-compose.yml)  
+[Nginx conf](task_5/nginx.conf)
 
 ### Commands
 ```

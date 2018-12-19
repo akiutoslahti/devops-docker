@@ -1,0 +1,43 @@
+version: "3.7"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile_back
+    volumes:
+      - "./logs.txt:/app/logs.txt"
+    ports:
+      - "8000:8000"
+    environment:
+      - "FRONT_URL=http://localhost:5000"
+      - "REDIS=redis"
+      - "DB_USERNAME=postgres"
+      - "DB_PASSWORD=secret"
+      - "DB_HOST=db"
+    container_name: "task2_3_back"
+    depends_on:
+      - db
+      - redis
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile_front
+    ports:
+      - "5000:5000"
+    environment: 
+      - "API_URL=http://localhost:8000"
+    container_name: "task2_3_front"
+    depends_on:
+      - backend
+
+  redis:
+    image: redis
+    container_name: "task2_3_redis"
+
+  db:
+    image: postgres
+    environment:
+      - "POSTGRES_PASSWORD=secret"
+    container_name: "task2_3_postgres"

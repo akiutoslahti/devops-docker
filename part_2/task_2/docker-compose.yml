@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile_back
+    volumes:
+      - "./logs.txt:/app/logs.txt"
+    ports:
+      - "8000:8000"
+    environment:
+      - "FRONT_URL=http://localhost:5000"
+      - "REDIS=redis"
+    container_name: "task2_2_back"
+    depends_on:
+      - redis
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile_front
+    ports:
+      - "5000:5000"
+    environment: 
+      - "API_URL=http://localhost:8000"
+    container_name: "task2_2_front"
+
+  redis:
+    image: redis
+    container_name: "task2_2_redis"

@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile_back
+    volumes:
+      - "./logs.txt:/app/logs.txt"
+    environment:
+      - "REDIS=redis"
+      - "DB_USERNAME=postgres"
+      - "DB_PASSWORD=secret"
+      - "DB_HOST=db"
+    container_name: "task2_5_back"
+    depends_on:
+      - db
+      - redis
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile_front
+    container_name: "task2_5_front"
+    environment:
+      - "API_URL=http://localhost/api"
+    depends_on:
+      - backend
+
+  redis:
+    image: redis
+    container_name: "task2_5_redis"
+
+  db:
+    image: postgres
+    environment:
+      - "POSTGRES_PASSWORD=secret"
+    container_name: "task2_5_postgres"
+
+  proxy:
+    image: jwilder/nginx-proxy
+    container_name: "task2_5_proxy"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "./nginx.conf:/etc/nginx/nginx.conf"
+    ports: 
+      - "80:80"
+    depends_on: 
+      - frontend

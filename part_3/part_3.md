@@ -65,3 +65,23 @@ task_3_3_front      latest              4e3105d66b1a        36 minutes ago      
 task_3_3_back       latest              0210f973f52f        36 minutes ago       265MB
 
 ```
+
+## Task 5
+
+### File
+[Dockerfile](task_5/Dockerfile)
+
+### Commands
+```
+$ docker build -t yle-dl_alpine .
+$ docker run -v $(pwd):/videos yle-dl_alpine https://areena.yle.fi/1-2101788
+```
+
+### Sizes
+```
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+yle-dl_alpine       latest              23665ae16e55        56 seconds ago      162MB
+yle-dl              latest              5844f6ce5c2d        11 minutes ago      720MB
+
+```

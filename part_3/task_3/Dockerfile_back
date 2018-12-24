@@ -1,0 +1,22 @@
+FROM ubuntu:18.04
+
+WORKDIR /app
+EXPOSE 8000
+
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y curl gnupg git \
+    && curl -sL https://deb.nodesource.com/setup_10.x | bash \
+    && apt-get install -y nodejs \
+    && git clone https://github.com/docker-hy/backend-example-docker.git /app \
+    && npm install \
+    && apt-get purge -y --auto-remove curl gnupg git \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean -y \
+    && useradd -m app \
+    && chown -R app:app /app
+
+USER app
+
+CMD npm start

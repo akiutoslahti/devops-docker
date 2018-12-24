@@ -1,0 +1,15 @@
+FROM node:8-alpine
+
+WORKDIR /app
+EXPOSE 5000
+
+RUN apk add --no-cache git \
+    && git clone https://github.com/docker-hy/frontend-example-docker.git /app \
+    && apk del git \
+    && npm install \
+    && adduser -D app \
+    && chown -R app:app /app
+
+USER app
+
+CMD npm start

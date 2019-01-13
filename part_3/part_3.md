@@ -85,3 +85,7 @@ yle-dl_alpine       latest              23665ae16e55        56 seconds ago      
 yle-dl              latest              5844f6ce5c2d        11 minutes ago      720MB
 
 ```
+
+## Task 6
+
+[Report 3.6b](task_6/task_6.md)
